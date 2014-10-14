@@ -62,4 +62,10 @@ public class CalculatorTest {
 	public void testSplitEverything2(){
 		assertEquals(18, Calculator.add("//[*][%]\n6*6%6"));
 	}
+
+	@Test
+	public void testMultipleDelimitersAnyLength(){
+		assertEquals(666, Calculator.add("//[(.Y.)][o~~][c==B]\n222(.Y.)222o~~111c==B111"));
+	}
+
 }
