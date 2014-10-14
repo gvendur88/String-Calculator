@@ -30,6 +30,6 @@ public class CalculatorTest {
 
 	@Test
 	public void testAddNumbersNewLine(){
-		assertEquals(88, Calculator.add("44\n44"));
+		assertEquals(10, Calculator.add("5\n5"));
 	}
 }
