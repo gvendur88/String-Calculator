@@ -4,23 +4,27 @@ import java.util.ArrayList;
 public class Calculator {
 
 	public static int add(String text){
-
-		if(text.contains("\n") && (text.contains(","))){
-			return sum(splitCommaNewline(text));
-		}
-		else if(text.equals("")){
+		
+		if(text.equals("")){
 			return 0;
 		}
-		else if(text.contains(",")){
-			return sum(splitNumbers(text));
+		else if(text.startsWith("//")){
+			return sum(splitCustomDelimiter(text));
 		}
-		else if(text.contains("\n")){
-			return sum(splitNewline(text));
+		else {
+			if(text.contains("\n") && (text.contains(","))){
+				return sum(splitCommaNewline(text));
+			}
+			else if(text.contains(",")){
+				return sum(splitNumbers(text));
+			}
+			else if(text.contains("\n")){
+				return sum(splitNewline(text));
+			}
+			else if((!text.contains(",")) && (!text.equals(""))){
+				return toInt(text);
+			}
 		}
-		else if((!text.contains(",")) && (!text.equals(""))){
-			return toInt(text);
-		}
-	
 		return 666;
 	}
 
@@ -60,5 +64,12 @@ public class Calculator {
 			throw new RuntimeException("Negatives: " + negs);
 		}
 		return total;
+	}
+	
+	private static String[] splitCustomDelimiter(String numbers){
+		String after = numbers.substring(numbers.indexOf('\n') + 1, numbers.length());
+		String input = after.replaceAll("[^0-9&^-]+", ",");
+
+		return input.split(",");
 	}
 }

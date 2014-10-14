@@ -52,4 +52,9 @@ public class CalculatorTest {
 	public void testGreaterThan1000(){
 		assertEquals(18, Calculator.add("2888,8,10"));
 	}
+
+	@Test
+	public void testDelimiterAnyLength(){
+		assertEquals(88, Calculator.add("//[***]\n21***32***35"));
+	}
 }
