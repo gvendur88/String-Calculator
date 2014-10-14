@@ -32,4 +32,9 @@ public class CalculatorTest {
 	public void testAddNumbersNewLine(){
 		assertEquals(10, Calculator.add("5\n5"));
 	}
+
+	@Test
+	public void testCommaNewline(){
+		assertEquals(666, Calculator.add("333\n222,111"));
+	}
 }

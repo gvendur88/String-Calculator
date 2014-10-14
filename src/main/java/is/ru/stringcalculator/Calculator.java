@@ -3,7 +3,10 @@ package is.ru.stringcalculator;
 public class Calculator {
 
 	public static int add(String text){
-		if (text.equals("")){
+		if(text.contains("\n") && (text.contains(","))){
+			return sum(splitCommaNewline(text));
+		}
+		else if(text.equals("")){
 			return 0;
 		}
 		else if(text.contains(",")){
@@ -15,7 +18,7 @@ public class Calculator {
 		else if((!text.contains(",")) && (!text.equals(""))){
 			return toInt(text);
 		}
-
+	
 		return 666;
 	}
 
@@ -29,6 +32,10 @@ public class Calculator {
 
 	private static String[] splitNewline(String numbers){
 		return numbers.split("\n");
+	}
+
+	private static String[] splitCommaNewline(String numbers){
+		return numbers.split("\n|\\,");
 	}
 
 	private static int sum(String[] numbers){
