@@ -37,4 +37,14 @@ public class CalculatorTest {
 	public void testCommaNewline(){
 		assertEquals(666, Calculator.add("333\n222,111"));
 	}
+
+	@Test
+	public void testNegativeException(){
+		try{
+			Calculator.add("-8,8,-666,666");
+		}
+		catch(RuntimeException ex){
+			assertEquals("Negatives: -8,-666,", ex.getMessage());
+		}
+	}
 }
