@@ -47,4 +47,9 @@ public class CalculatorTest {
 			assertEquals("Negatives: -8,-666,", ex.getMessage());
 		}
 	}
+
+	@Test
+	public void testGreaterThan1000(){
+		assertEquals(18, Calculator.add("2888,8,10"));
+	}
 }
